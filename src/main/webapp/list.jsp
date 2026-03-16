@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>주행내역 조회</title>
 </head>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
+<section>
 
+</section>
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

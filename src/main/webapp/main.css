@@ -47,3 +47,10 @@ h2{
 table{
 	margin:auto;
 }
+
+address{
+	text-align: center;
+}
+.td-center{
+	text-align:center;
+}

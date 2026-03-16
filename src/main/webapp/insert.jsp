@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>insert.jsp</title>
+<title>주행내역등록</title>
 </head>
 <body>
 <script src="java.js"></script>
@@ -15,7 +15,7 @@
 <table border="1">
 
 <tr>
-    <td width="120">주행일자</td>
+    <td width="120" class="td-center">주행일자</td>
     <td width="150">
         <input type="text" name="drv_date">
     </td>
@@ -23,7 +23,7 @@
 </tr>
 
 <tr>
-    <td>차량번호</td>
+    <td class="td-center">차량번호</td>
     <td>
         <input type="text" name="car_no">
     </td>
@@ -31,7 +31,7 @@
 </tr>
 
 <tr>
-    <td>출발Km</td>
+    <td class="td-center">출발Km</td>
     <td>
         <input type="text" name="drv_start">
     </td>
@@ -39,7 +39,7 @@
 </tr>
 
 <tr>
-    <td>도착Km</td>
+    <td class="td-center">도착Km</td>
     <td>
         <input type="text" name="drv_end">
     </td>
@@ -47,7 +47,7 @@
 </tr>
 
 <tr>
-    <td>부서코드</td>
+    <td class="td-center">부서코드</td>
     <td colspan="2">
         <select name="dept_code">
             <option>[10]영업부</option>
@@ -59,7 +59,7 @@
 </tr>
 
 <tr>
-    <td>주유금액</td>
+    <td class="td-center">주유금액</td>
     <td>
         <input type="text" name="drv_money">
     </td>
@@ -67,7 +67,7 @@
 </tr>
 
 <tr>
-    <td colspan="3" align="center">
+    <td colspan="3" class="td-center">
         <input type="submit" value="주행내역등록">
         <input type="reset" value="다시쓰기">
     </td>

@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>부서별주행통계</title>
 </head>
 <body>
-
+<jsp:include page="header.jsp"></jsp:include>
+<section></section>
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
