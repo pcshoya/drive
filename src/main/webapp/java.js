@@ -1,4 +1,3 @@
-<script>
 function checkValue(){
     if(document.frm.drv_date.value == ""){
         alert("주행일자가 입력되지 않았습니다!");
@@ -35,4 +34,3 @@ function checkValue(){
     }
     return true;
 }
-</script>
