@@ -13,10 +13,10 @@
 <h2>차량조회</h2>
 <%
 /* 자바 DB 연동 프로그램 */
-	Class.forName("oracle.jdbc.OracleDriver");
-	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "system", "1234");
+	Class.forName("oracle.jdbc.OracleDriver");	//db_connect.jsp 에서 제공
+	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/xe", "system", "1234"); // db_connect.jsp에서 제공
 	Statement stmt = con.createStatement();
-	ResultSet rs = stmt.executeQuery("SELECT * FROM TBL_CAR ORDER BY CAR_NO");
+	ResultSet rs = stmt.executeQuery("select * from tbl_car order by CAR_NO");
 %>
 <table border="1">
 <tr>
