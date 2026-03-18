@@ -34,8 +34,7 @@
 <footer>
 <address>
 <center>
-HRDKOREA Copyrightⓒ All rights reserved. Human Resources Development
-Service of Korea
+HRDKOREA Copyrightⓒ All rights reserved. Human Resources Development Service of Korea
 </center>
 </address>
 </footer>
