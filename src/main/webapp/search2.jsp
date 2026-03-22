@@ -1,7 +1,8 @@
-<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="drive.Util" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*"%>
+<%@ include file="dbconnect.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,17 +10,43 @@
 <title>부서별주행통계</title>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
-<section>
-<%
-Connection conn = Util.getConnection();
-Statment stmt = conn.createStatement();
-String sql = "select * from db";
-%>
-
-
-
-</section>
-<jsp:include page="footer.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
+	<section>
+		<h2>(부서별)주행통계</h2>
+		<%
+		Statement stmt = null;
+		ResultSet rs = null;
+		try { /* 예외 처리를 위한 try 시작 */
+			stmt = conn.createStatement(); /* SQL 실행을 위한 객체 생성 */
+			rs = stmt.executeQuery("SELECT * FROM TBL_DEPT"); 
+		%>
+		<table border="1">
+			<tr>
+				<th>부서코드</th>
+				<th>부서명</th>
+				<th>총운행거리</th>
+				<th>총주유금액</th>
+			</tr>
+		<%
+			while (rs.next()) { /* 다음 데이터가 있을 때까지 반복 */
+		%>			
+			<tr>
+				<td><%=rs.getString("DEPT_CODE")%></td>
+				<td><%=rs.getString("DEPT_NAME")%></td>
+				<td><%=rs.getString("")%></td>
+				<td><%=rs.getString("")%></td>
+			</tr>
+		<%
+			}
+		} catch (Exception e) { // 예외 발생 시 처리
+			e.printStackTrace(); // 콘솔에 에러 출력
+			out.println("DB 조회 오류 : " + e.getMessage()); // 화면에 에러 메시지 출력
+		}
+			rs.close(); // ResultSet 자원 해제
+			stmt.close(); // PreparedStatement 자원 해제
+			conn.close(); // DB 연결 종료
+		%>
+		</table>
+	</section>
 </body>
 </html>

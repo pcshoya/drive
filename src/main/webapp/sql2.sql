@@ -57,3 +57,20 @@ SELECT * FROM TBL_DRIVE;
 select car_no, car_model from tbl_car order by CAR_NO;
 
 select sysdate from dual;
+
+SELECT 
+    TO_CHAR(TO_DATE(D.DRV_DATE, 'YYYYMMDD'), 'YYYY"년"MM"월"DD"일"'),
+    D.CAR_NO,
+    C.CAR_MODEL,
+    TO_CHAR(D.DRV_START, '999,999'),
+    TO_CHAR(D.DRV_END, '999,999'),
+    T.DEPT_NAME,
+    '₩' || TO_CHAR(D.DRV_MONEY, '999,999')
+FROM TBL_DRIVE D
+JOIN TBL_CAR C
+    ON D.CAR_NO = C.CAR_NO
+JOIN TBL_DEPT T
+    ON D.DEPT_CODE = T.DEPT_CODE
+ORDER BY D.DRV_DATE DESC, D.CAR_NO;
+
+SELECT * FROM TBL_DRIVE

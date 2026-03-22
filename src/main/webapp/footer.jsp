@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="db_connect.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@ include file="dbconnect.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<footer>
-HRDKOREA Copyrightⓒ2020 All rights reserved. Human Resources Development Service of Korea
-</footer>
+	<footer> HRDKOREA Copyrightⓒ2020 All rights reserved. Human
+		Resources Development Service of Korea </footer>
 </body>
 </html>

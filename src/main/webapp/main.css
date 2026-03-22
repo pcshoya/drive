@@ -10,6 +10,7 @@ header{
 	font-size: 32px;
 	line-height:70px;
 }
+
 nav{
 	position: fixed;
 	height:30px;
@@ -46,6 +47,10 @@ h2{
 
 table{
 	margin:auto;
+}
+
+td{
+	text-align: center;
 }
 
 address{
