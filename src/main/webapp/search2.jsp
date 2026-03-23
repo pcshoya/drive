@@ -18,7 +18,11 @@
 		ResultSet rs = null;
 		try { /* 예외 처리를 위한 try 시작 */
 			stmt = conn.createStatement(); /* SQL 실행을 위한 객체 생성 */
-			rs = stmt.executeQuery("SELECT * FROM TBL_DEPT"); 
+			rs = stmt.executeQuery("SELECT D.DEPT_CODE, D.DEPT_NAME, SUM(C.DRV_END - C.DRV_START) AS A, TO_CHAR(SUM(C.DRV_MONEY),'L999,999') AS B "+
+					"FROM TBL_DRIVE C "+
+					"JOIN TBL_DEPT D "+   
+					"ON C.DEPT_CODE = D.DEPT_CODE "+
+					"GROUP BY D.DEPT_CODE, D.DEPT_NAME"); 
 		%>
 		<table border="1">
 			<tr>
@@ -33,8 +37,8 @@
 			<tr>
 				<td><%=rs.getString("DEPT_CODE")%></td>
 				<td><%=rs.getString("DEPT_NAME")%></td>
-				<td><%=rs.getString("")%></td>
-				<td><%=rs.getString("")%></td>
+				<td><%=rs.getString("A")%></td>
+				<td><%=rs.getString("B")%></td>
 			</tr>
 		<%
 			}
