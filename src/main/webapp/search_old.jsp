@@ -24,9 +24,8 @@
 		<!-- 제목 출력 -->
 
 		<%
-		try { /* 예외 처리를 위한 try 시작 */
 			Statement stmt = conn.createStatement(); /* SQL 실행을 위한 객체 생성 */
-			ResultSet rs = stmt.executeQuery("select * from tbl_car order by car_no"); /* SQL 실행 후 결과를 ResultSet으로 반환 (※ 여기서는 sql 인자 없이 executeQuery()가 더 적절) */
+			ResultSet rs = stmt.executeQuery("select * from tbl_car order by car_n"); /* SQL 실행 후 결과를 ResultSet으로 반환 (※ 여기서는 sql 인자 없이 executeQuery()가 더 적절) */
 		%>
 
 		<table border="1">
@@ -60,13 +59,8 @@
 			<%
 			}
 			rs.close(); // ResultSet 자원 해제
-			stmt.close(); // Statement 자원 해제
+			stmt.close(); // PreparedStatement 자원 해제
 			conn.close(); // DB 연결 종료
-
-			} catch (Exception e) { // 예외 발생 시 처리
-			e.printStackTrace(); // 콘솔에 에러 출력
-			out.println("DB 조회 오류 : " + e.getMessage()); // 화면에 에러 메시지 출력
-			}
 			%>
 
 		</table>
