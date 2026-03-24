@@ -1,44 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
-<!-- JSP 페이지 설정: Java 사용, UTF-8 인코딩 지정 -->
-
 <%@ page import="java.sql.*"%>
-<!--    JDBC 관련 클래스 사용을 위한 import -->
-
 <%@ include file="dbconnect.jsp"%>
-<!-- DB 연결 정보가 담긴 JSP 파일 포함 -->
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- HTML 문서 인코딩 설정 -->
 <title>차량조회</title>
-<!-- 브라우저 탭 제목 -->
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<!-- header.jsp 파일을 현재 위치에 포함 -->
 	<section>
-		<!-- 본문 영역 시작 -->
 		<h2>차량조회</h2>
-		<!-- 제목 출력 -->
 
 		<%
 		try { /* 예외 처리를 위한 try 시작 */
-			Statement stmt = conn.createStatement();
+			Statement stmt = conn.createStatement(); /* SQL 실행을 위한 객체 생성 */
 			ResultSet rs = stmt.executeQuery(
-			    "SELECT * FROM TBL_DRIVE"
+					"SELECT TO_CHAR(TO_DATE(D.DRV_DATE, 'YYYYMMDD'), 'YYYY\"년\"MM\"월\"DD\"일\"') AS 주행일자, D.CAR_NO AS 차량번호, C.CAR_MODEL AS 모델, TO_CHAR(D.DRV_START, '999,999') AS 출발KM, TO_CHAR(D.DRV_END, '999,999') AS 도착KM, T.DEPT_NAME AS 부서명, TO_CHAR(D.DRV_MONEY, 'L999,999') AS 주유금액 "+
+					"FROM TBL_DRIVE D "+
+					"JOIN TBL_CAR C "+
+				    "ON D.CAR_NO = C.CAR_NO "+
+					"JOIN TBL_DEPT T "+
+				    "ON D.DEPT_CODE = T.DEPT_CODE "+
+					"ORDER BY D.DRV_DATE DESC, D.CAR_NO "
 			);
 		%>
 
 		<table border="1">
-			<!-- 테이블 시작 (테두리 1) -->
 			<tr>
 				<th>주행일자</th>
 				<th>차량번호</th>
+				<th>모델</th>
 				<th>출발km</th>
 				<th>도착km</th>
-				<th>부서코드</th>
+				<th>부서명</th>
 				<th>주유금액</th>
 			</tr>
 
@@ -47,33 +43,29 @@
 			%>
 
 			<tr>
-				<td><%=rs.getString("DRV_DATE")%></td>
-				<td><%=rs.getString("CAR_NO")%></td>
-				<td><%=rs.getString("DRV_START")%></td>
-				<td><%=rs.getString("DRV_END")%></td>
-				<td><%=rs.getString("DEPT_CODE")%></td>
-				<td><%=rs.getString("DRV_MONEY")%></td>
+				<td><%=rs.getString("주행일자")%></td>
+				<td><%=rs.getString("차량번호")%></td>
+				<td><%=rs.getString("모델")%></td>
+				<td><%=rs.getString("출발km")%></td>
+				<td><%=rs.getString("도착km")%></td>
+				<td><%=rs.getString("부서명")%></td>
+				<td><%=rs.getString("주유금액")%></td>
 			</tr>
 
 			<%
 			}
-			rs.close(); // ResultSet 자원 해제
-			stmt.close(); // PreparedStatement 자원 해제
-			conn.close(); // DB 연결 종료
+			rs.close(); /* ResultSet 자원 해제 */
+			stmt.close(); /* Statement 자원 해제 */
+			conn.close(); /* DB 연결 종료 */
 
-			} catch (Exception e) { // 예외 발생 시 처리
-			e.printStackTrace(); // 콘솔에 에러 출력
-			out.println("DB 조회 오류 : " + e.getMessage()); // 화면에 에러 메시지 출력
+			} catch (Exception e) { /* 예외 발생 시 처리 */
+			e.printStackTrace(); /* 콘솔에 에러 출력 */
+			out.println("DB 조회 오류 : " + e.getMessage()); /* 화면에 에러 메시지 출력 */
 			}
 			%>
 
 		</table>
-		<!-- 테이블 종료 -->
 	</section>
-	<!-- 본문 영역 종료 -->
-
 	<jsp:include page="footer.jsp"></jsp:include>
-	<!-- footer.jsp 파일 포함 -->
-
 </body>
 </html>
