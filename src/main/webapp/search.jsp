@@ -59,7 +59,7 @@
 
 			<%
 			}
-			rs.close(); // ResultSet 자원 해제
+			rs.close(); /* ResultSet 자원 해제 */
 			stmt.close(); // Statement 자원 해제
 			conn.close(); // DB 연결 종료
 
