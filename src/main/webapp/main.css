@@ -49,13 +49,18 @@ table{
 	margin:auto;
 }
 
-td{
-	text-align: center;
-}
-
 address{
 	text-align: center;
 }
+
+.td-left{
+	text-align: left;
+}
+
+.td-right{
+	text-align: right;
+}
+
 .td-center{
 	text-align:center;
 }

@@ -53,7 +53,7 @@
 				<!-- 차량 모델 출력 -->
 				<td><%=rs.getString("CAR_COMPANY")%></td>
 				<!-- 제조사 출력 -->
-				<td><%=rs.getString("CAR_DATE")%></td>
+				<td class="td-right"><%=rs.getString("CAR_DATE")%></td>
 				<!-- 구매일 출력 -->
 			</tr>
 
