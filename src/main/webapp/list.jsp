@@ -9,7 +9,7 @@
 <title>차량조회</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>q
 	<section>
 		<h2>차량조회</h2>
 
